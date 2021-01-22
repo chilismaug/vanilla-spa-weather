@@ -21,6 +21,7 @@ document.onreadystatechange = function () {
 					var data = JSON.parse(request.responseText);
                     var templatedCard =`
                          <div class="data-badge">City Name ${ data.name }</div> 
+                         <div class="data-badge">Long Lat Coords ${ data["coord"]["lon"]} / ${ data["coord"]["lat"]}</div>
                          <div class="data-badge">Country ${ data["sys"]["country"]}</div>
                          <div class="data-badge">TZone ${ data.timezone }</div>
                                                   
@@ -47,7 +48,7 @@ document.onreadystatechange = function () {
 						document.querySelector('#cityname').value = ''
 					});
 				}  else {
-					alert('No users found!')
+					alert(`No city "${cityname}" found!`)
 				}
 			}
 		}
