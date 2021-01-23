@@ -8,7 +8,7 @@ document.onreadystatechange = function () {
 		
 		// Ajax call
         const API_KEY = '40d0c5223044f01a0f0142846dc203d3'
-        const API_URL = ('http://api.openweathermap.org/data/2.5/weather?&mode=json&units=metric')
+        const API_URL = ('https://api.openweathermap.org/data/2.5/weather?&mode=json&units=metric')
         //   in python we ask it       data = requests.get(API_URL.format(city, API_KEY)).json()
       //  q={} city
       //  &appid={} api key
