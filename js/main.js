@@ -20,20 +20,27 @@ document.onreadystatechange = function () {
 				if (request.status === 200) {
 					var data = JSON.parse(request.responseText);
                     var templatedCard =`
-                         <div class="data-badge">City Name ${ data.name }</div> 
-                         <div class="data-badge">Long Lat Coords ${ data["coord"]["lon"]} / ${ data["coord"]["lat"]}</div>
-                         <div class="data-badge">Country ${ data["sys"]["country"]}</div>
-                         <div class="data-badge">TZone ${ data.timezone }</div>
+                    <div class="row"> 
+                        <div class="col-9">                    
+                            <div class="data-badge">City ${ data.name }</div> 
+                            <div class="data-badge">Country ${ data["sys"]["country"]}</div>
+                            <div class="data-badge">Tm Zone ${ data.timezone }</div>
+                            <div class="data-badge">Long / Lat ${ data["coord"]["lon"]} / ${ data["coord"]["lat"]}</div>
+                            <p><hr>
+                            <div class="data-badge">Temp ${ data["main"]["temp"] } °C</div> 
+                            <div class="data-badge">Hum ${ data["main"]["humidity"] } %</div> 
+                            <p>
+                            <img class="img-fluid" src="http://openweathermap.org/img/wn/${ data['weather'][0]['icon']}@4x.png" /> 
+
+                            <div class="data-badge"> ${ data["weather"][0]["main"] }</div>   
+                            <div class="data-badge">Clouds ${ data["clouds"]["all"]}</div>
+                            <div class="data-badge">Vis ${ data.visibility }</div>
                                                   
-                         <p><hr>
-                         <div class="data-badge">Temp ${ data["main"]["temp"] } °C</div>   
-                         <div class="data-badge"> ${ data["weather"][0]["main"] }</div>   
-                         <div class="data-badge">Vis ${ data.visibility }</div>
-                         <div class="data-badge">Clouds ${ data["clouds"]["all"]}</div>                         
-                         <div>            
+                            <div>            
                              <button class="btn btn-blue" id="searchAgain">Search Again</button>
-                         </div>
-                      </div>`;
+                            </div>
+                        </div>
+                    </div>`;
 					if (data.message !== 'Not Found') {
 						searchForm.style.display = "none"
 						result.innerHTML = templatedCard;
